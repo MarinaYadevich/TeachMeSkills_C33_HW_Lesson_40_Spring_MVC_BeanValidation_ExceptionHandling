@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>by.tms</groupId>
-	<artifactId>TeachMeSkills_C33_HW_Lesson_39_Spring_MVC_Lesson40</artifactId>
+	<artifactId>TeachMeSkills_C33_HW_Lesson_39-40</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>TeachMeSkills_C33_HW_Lesson_39_Spring_MVC</name>
 	<description>Demo project for Spring Boot</description>
@@ -53,12 +53,6 @@
 			<artifactId>postgresql</artifactId>
 			<version>42.7.1</version>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-validation</artifactId>
-		</dependency>
-
-
 	</dependencies>
 
 	<build>

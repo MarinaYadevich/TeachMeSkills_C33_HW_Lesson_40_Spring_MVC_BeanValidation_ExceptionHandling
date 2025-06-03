@@ -1,12 +1,9 @@
 package by.tms.TeachMeSkills_C33_HW_Lesson_39_Spring_MVC.controller;
 
-import by.tms.TeachMeSkills_C33_HW_Lesson_39_Spring_MVC.exception.ProductNotFoundException;
 import by.tms.TeachMeSkills_C33_HW_Lesson_39_Spring_MVC.service.ProductService;
 import by.tms.TeachMeSkills_C33_HW_Lesson_39_Spring_MVC.model.Product;
-import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,10 +34,7 @@ public class ProductController {
 
     // Saving a new or updated product
     @PostMapping //create
-    public String saveProduct(@Valid @ModelAttribute("product") Product product, BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            return "product-form";
-        }
+    public String saveProduct(@ModelAttribute("product") Product product) {
         productService.saveProduct(product);
         return "redirect:/products";
     }
@@ -50,7 +44,7 @@ public class ProductController {
     public String showEditForm(@PathVariable("id") Long id, Model model) {
         Product product = productService.getProductById(id);
         if (product == null) {
-            throw new ProductNotFoundException("Product not found with id: " + id);
+            System.out.println("Product not found with id: " + id);
         }
         model.addAttribute("product", product);
         return "product-form";
@@ -64,7 +58,7 @@ public class ProductController {
         }
         Product product = productService.getProductById(id);
         if(product == null) {
-            throw new ProductNotFoundException("Product not found with ID: " + id);
+            System.out.println("Product not found with ID: " + id);
         }
         productService.deleteProductById(id);
         return "redirect:/products";

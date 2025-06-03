@@ -7,31 +7,23 @@
 </head>
 <body>
 
-<!-- Заголовок формы: если ID нет — добавление, иначе — редактирование -->
 <h1 th:text="${product.id} == null ? 'Добавить продукт' : 'Редактировать продукт'"></h1>
 
-<!-- Основная форма, общая для создания и редактирования -->
 <form th:action="@{/products}" th:object="${product}" method="post">
-  <!-- Скрытое поле ID (нужно при редактировании) -->
   <input type="hidden" th:field="*{id}" />
 
-  <!-- Поле Название -->
   <label for="name">Название:</label>
   <input type="text" id="name" th:field="*{name}" />
-  <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
 
-  <!-- Поле Цена -->
   <label for="price">Цена:</label>
   <input type="number" id="price" step="0.01" th:field="*{price}" />
-  <div th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
 
-  <!-- Кнопка отправки -->
   <button type="submit">Сохранить</button>
 </form>
 
-<!-- Ссылка назад -->
 <a href="/products">Назад к списку</a>
 
 </body>
 </html>
+
 
